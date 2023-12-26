@@ -3,5 +3,21 @@
         "activityBar.background": "#273101",
         "titleBar.activeBackground": "#364502",
         "titleBar.activeForeground": "#F5FED2"
-    }
+    },
+    "javascript.inlayHints.enumMemberValues.enabled": false,
+    "javascript.inlayHints.functionLikeReturnTypes.enabled": false,
+    "javascript.inlayHints.parameterNames.enabled": "none",
+    "javascript.inlayHints.parameterTypes.enabled": false,
+    "javascript.inlayHints.propertyDeclarationTypes.enabled": false,
+    "javascript.inlayHints.variableTypes.enabled": false,
+    "javascript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false,
+    "javascript.inlayHints.variableTypes.suppressWhenTypeMatchesName": false,
+    "typescript.inlayHints.enumMemberValues.enabled": false,
+    "typescript.inlayHints.functionLikeReturnTypes.enabled": false,
+    "typescript.inlayHints.parameterNames.enabled": "none",
+    "typescript.inlayHints.variableTypes.enabled": false,
+    "typescript.inlayHints.propertyDeclarationTypes.enabled": false,
+    "typescript.inlayHints.parameterTypes.enabled": false,
+    "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false,
+    "typescript.inlayHints.variableTypes.suppressWhenTypeMatchesName": false,
 }

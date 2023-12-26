@@ -2,10 +2,10 @@ const express = require('express');
 const app = express();
 const PORT = 3001;
 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.listen(PORT, ()=> {
+app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);
 });
 
@@ -18,12 +18,21 @@ const books = [
     },
 ];
 
-app.get("/", (req, res) => {
-    res.send(books);
-});
+app.get("/", (req, res, next) => {
+    console.log('before handling request.');
+    next();
+},
+    (req, res, next) => {
+        res.send(books);
+        next();
+    },
+    () => {
+        console.log('Finished Executing GET Request.');
+    }
+);
 
-app.post("/", (req, res)=> {
+app.post("/", (req, res, next) => {
     console.log(req.body);
-    // res.send(201);
+    books.push(req.body);
     res.status(201).send();
-})
+});
