@@ -1,7 +1,9 @@
 const express = require('express');
+const cookieParser = require('cookie-parser')
 const groceriesRoute = require('./routes/groceries');
 const bookMarket = require('./routes/booksMarket');
 const app = express();
+app.use(cookieParser());
 const PORT = 3001;
 
 
