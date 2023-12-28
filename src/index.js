@@ -1,5 +1,6 @@
 const express = require('express');
 const groceriesRoute = require('./routes/groceries');
+const bookMarket = require('./routes/booksMarket');
 const app = express();
 const PORT = 3001;
 
@@ -15,7 +16,10 @@ app.use((req,res,next)=>{
 
 // Prefix with api word
 app.use('/api', groceriesRoute);
+app.use('/api', bookMarket);
 
 app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);
 });
+
+// https://google.com/?q=java&filterBy=
