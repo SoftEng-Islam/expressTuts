@@ -61,7 +61,7 @@ router.post("/groceries", (req, res, next) => {
 
 
 
-router.get('/groceries/cart', (req, res) => {
+router.get('/shopping/cart', (req, res) => {
     const {cart} = req.session;
     console.log('cart');
     if(!cart) {
@@ -70,7 +70,7 @@ router.get('/groceries/cart', (req, res) => {
         res.send(cart)
     }
 });
-router.post('/groceries/cart/item', (req, res) => {
+router.post('/shopping/cart/item', (req, res) => {
     const {item, quantity} = req.body;
     const cartItem = {item, quantity};
     console.log(cartItem);

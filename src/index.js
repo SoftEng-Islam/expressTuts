@@ -3,6 +3,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser')
 const groceriesRoute = require('./routes/groceries');
 const bookMarket = require('./routes/booksMarket');
+const authRoute = require('./routes/auth');
 const app = express();
 const PORT = 3001;
 
@@ -13,11 +14,11 @@ app.use(express.json());
 
 app.use(cookieParser());
 app.use(session({
-    secret: "R444g4g5h5hhtyy4twetryhtrhj5ju5",
+    secret: 'keyboard cat',
     resave: false,
-    saveUninitialized: false
-}));
-
+    saveUninitialized: true,
+    cookie: { secure: true }
+}))
 
 app.use((req,res,next)=>{
     console.log(req.url);
@@ -27,6 +28,7 @@ app.use((req,res,next)=>{
 // Prefix with api word
 app.use('/api', groceriesRoute);
 app.use('/api', bookMarket);
+app.use('/api', authRoute);
 
 app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);
