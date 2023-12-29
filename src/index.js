@@ -30,6 +30,12 @@ app.use('/api', groceriesRoute);
 app.use('/api', bookMarket);
 app.use('/api', authRoute);
 
+app.use((req,res, next)=>{
+    if(req.session.user) next();
+    else res.status(401).send();
+})
+
+
 app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);
 });
