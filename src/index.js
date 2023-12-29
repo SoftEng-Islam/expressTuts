@@ -4,13 +4,20 @@ const cookieParser = require('cookie-parser')
 const groceriesRoute = require('./routes/groceries');
 const bookMarket = require('./routes/booksMarket');
 const app = express();
-app.use(cookieParser());
 const PORT = 3001;
 
 
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(cookieParser());
+app.use(session({
+    secret: "R444g4g5h5hhtyy4twetryhtrhj5ju5",
+    resave: false,
+    saveUninitialized: false
+}));
+
 
 app.use((req,res,next)=>{
     console.log(req.url);

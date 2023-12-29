@@ -5,13 +5,16 @@ const router = Router();
 
 const groceryList = [
     {
-        item: 'harry potter'
+        item: 'harry potter',
+        quantity: 3
     },
     {
-        item: 'LordoftheFlies'
+        item: 'LordoftheFlies',
+        quantity: 5
     },
     {
-        item: 'milk'
+        item: 'milk',
+        quantity: 10
     },
 ];
 
@@ -55,5 +58,32 @@ router.post("/groceries", (req, res, next) => {
     books.push(req.body);
     res.status(201).send();
 });
+
+
+
+router.get('/groceries/cart', (req, res) => {
+    const {cart} = req.session;
+    console.log('cart');
+    if(!cart) {
+        res.send('Yu have no cart session');
+    } else {
+        res.send(cart)
+    }
+});
+router.post('/groceries/cart/item', (req, res) => {
+    const {item, quantity} = req.body;
+    const cartItem = {item, quantity};
+    console.log(cartItem);
+    // res.send(req.sessionID);
+    const {cart} = req.session;
+    if(cart) {
+        req.session.cart.items.push(cartItem);
+    } else {
+        req.session.cart = {
+            items: [cartItem],
+        }
+    }
+    res.status(201).send();
+})
 
 module.exports = router;
