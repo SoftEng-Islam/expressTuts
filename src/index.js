@@ -12,7 +12,7 @@ const PORT = 3001;
 
 mongoose.connect('mongodb://localhost:27017/expressTuts')
 .then(()=>console.log('connected To DB'))
-.catch((error)=>console.log(error))
+.catch((error)=>console.log(error));
 
 
 app.use(express.urlencoded({ extended: true }));
