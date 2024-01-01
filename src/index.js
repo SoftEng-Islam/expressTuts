@@ -33,15 +33,21 @@ app.use((req,res,next)=>{
     next();
 });
 
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 // Prefix with api word
 app.use('/api', groceriesRoute);
 app.use('/api', bookMarket);
 app.use('/api', authRoute);
 
-app.use((req,res, next)=>{
-    if(req.session.user) next();
-    else res.status(401).send();
-})
+// app.use((req,res, next)=>{
+//     if(req.session.user) next();
+//     else res.status(401).send();
+// })
 
 
 app.listen(PORT, () => {
