@@ -2,6 +2,9 @@ const express = require('express');
 
 const session = require('express-session');
 const cookieParser = require('cookie-parser')
+const passport = require('passport');
+
+// Routes
 const groceriesRoute = require('./routes/groceries');
 const bookMarket = require('./routes/booksMarket');
 const authRoute = require('./routes/auth');
