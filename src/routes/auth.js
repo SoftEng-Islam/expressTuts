@@ -1,37 +1,43 @@
 const  {Router} = require('express');
+const passport = require('passport');
 const User = require('../database/schemas/User');
 const router = Router();
 const {hashPassword, comparePassword} = require('../utils/helpers');
 
-router.post('/auth/login', async (req, res) => {
-    const {username, password} = req.body;
-    if(!username || !password) return res.sendStatus(400);
-    const userDB = await User.findOne({username});
-    if(!userDB) return res.sendStatus(401);
+// router.post('/auth/login', async (req, res) => {
+//     const {username, password} = req.body;
+//     if(!username || !password) return res.sendStatus(400);
+//     const userDB = await User.findOne({username});
+//     if(!userDB) return res.sendStatus(401);
 
-    const isValid = comparePassword(password, userDB.password);
-    if(isValid) {
-        console.log('Authenticated Successfully!');
-        req.session.user = userDB;
-        return res.sendStatus(200);
-    } else {
-        console.log('failed to Authenticate');
-        return res.sendStatus(401);
-    }
+//     const isValid = comparePassword(password, userDB.password);
+//     if(isValid) {
+//         console.log('Authenticated Successfully!');
+//         req.session.user = userDB;
+//         return res.sendStatus(200);
+//     } else {
+//         console.log('failed to Authenticate');
+//         return res.sendStatus(401);
+//     }
 
-    // if(username && password) {
-    //     if(req.session.user) {
-    //         res.send('You are already logged in!');
-    //     } else {
-    //         req.session.user = {
-    //             username
-    //         };
-    //         res.send(req.session);
-    //     }
-    // } else {
-    //     res.send(401);
-    // }
-})
+//     // if(username && password) {
+//     //     if(req.session.user) {
+//     //         res.send('You are already logged in!');
+//     //     } else {
+//     //         req.session.user = {
+//     //             username
+//     //         };
+//     //         res.send(req.session);
+//     //     }
+//     // } else {
+//     //     res.send(401);
+//     // }
+// })
+
+router.post('/auth/login', passport.authenticate('local'), (req, res) => {
+    console.log('Logged in!');
+    res.sendStatus(200);
+});
 
 router.post('/auth/register', async (req,res) =>{
     const {username, email} = req.body;

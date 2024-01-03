@@ -4,6 +4,7 @@ const express = require('express');
 const session = require('express-session');
 const cookieParser = require('cookie-parser')
 const passport = require('passport');
+require('./strategies/local');
 
 // Routes
 const groceriesRoute = require('./routes/groceries');
