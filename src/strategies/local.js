@@ -5,8 +5,8 @@ const { Strategy } = require('passport-local');
 
 passport.use(
     new Strategy({
-        usernameField: 'ema il'
-    }, () =>{
+        usernameField: 'username'
+    }, (username, password, done) =>{
 
     })
 )
