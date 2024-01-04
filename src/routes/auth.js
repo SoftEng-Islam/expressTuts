@@ -1,9 +1,12 @@
 const  {Router} = require('express');
+const router = Router();
+
 
 const passport = require('passport');
-const User = require('../database/schemas/User');
-const router = Router();
 const {hashPassword, comparePassword} = require('../utils/helpers');
+
+const User = require('../database/schemas/User');
+
 
 // router.post('/auth/login', async (req, res) => {
 //     const {username, password} = req.body;
