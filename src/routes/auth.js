@@ -1,4 +1,5 @@
 const  {Router} = require('express');
+
 const passport = require('passport');
 const User = require('../database/schemas/User');
 const router = Router();
