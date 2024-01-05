@@ -19,9 +19,7 @@ require('./database/index');
 const app = express();
 const PORT = 3001;
 
-app.use(passport.initialize());
-app.use(passport.session());
-require('./strategies/local');
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -34,6 +32,11 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: true }
 }))
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+require('./strategies/local');
 
 app.use((req,res,next)=>{
     console.log(req.url);

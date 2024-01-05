@@ -38,7 +38,7 @@ const User = require('../database/schemas/User');
 //     // }
 // })
 
-router.post('/auth/login', passport.authenticate('local'), (req, res) => {
+router.post('/auth/login', passport.authenticate('local', { failureRedirect: '/auth/login' }), (req, res) => {
     console.log('Logged in!');
     res.sendStatus(200);
     res.redirect('/');
