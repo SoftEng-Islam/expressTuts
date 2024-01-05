@@ -41,6 +41,8 @@ const User = require('../database/schemas/User');
 router.post('/auth/login', passport.authenticate('local'), (req, res) => {
     console.log('Logged in!');
     res.sendStatus(200);
+    res.redirect('/');
+
 });
 
 router.post('/auth/register', async (req,res) =>{
