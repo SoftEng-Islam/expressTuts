@@ -38,15 +38,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 require('./strategies/local');
 
+
 app.use((req,res,next)=>{
     console.log(req.url);
     next();
 });
-
-
-app.use(passport.initialize());
-app.use(passport.session());
-
 
 // Prefix with api word
 app.use('/api', groceriesRoute);
