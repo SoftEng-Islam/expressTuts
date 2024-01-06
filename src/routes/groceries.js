@@ -18,6 +18,12 @@ const groceryList = [
     },
 ];
 
+router.use((req,res,next) => {
+    console.log('groceries');
+    console.log(req.user);
+    if(req.user) next();
+    else res.sendStatus(401);
+})
 
 router.get("/groceries",
     (req, res, next) => {
